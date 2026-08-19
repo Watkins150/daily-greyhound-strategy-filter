@@ -1,0 +1,100 @@
+date,track,race_time,runner_number,dog_name,strategy,StrategyMinPrice,StrategyMaxPrice,Distance,Grade,AnalystVerdictPosition,ForecastRank,ForecastFractional,ForecastDecimal,ForecastState,Status,ExclusionCategory,Reason
+2026-08-19,Doncaster,15:11,2,Rapido Ramona,"UK LAY Doncaster Trap 2,6",6,120,275m,D3,OUTSIDE_TOP3,4,5/1,6.0,OUTSIDE_TOP3,RETAINED,,Forecast #4 reviewed (5/1; decimal 6.00); retained absent converging danger evidence
+2026-08-19,Doncaster,15:11,6,Savana Brendo,"UK LAY Doncaster Trap 2,6",6,120,275m,D3,OUTSIDE_TOP3,6,9/1,10.0,OUTSIDE_TOP3,RETAINED,,
+2026-08-19,Doncaster,15:49,2,Cockneys Zeus,"UK LAY Doncaster Trap 2,6",6,120,275m,D3,OUTSIDE_TOP3,3,9/2,5.5,BOUNDARY_TIE,RETAINED,,Forecast tie crosses third-place boundary; retained absent stronger evidence
+2026-08-19,Doncaster,15:49,6,Easy Stump,"UK LAY Doncaster Trap 2,6",6,120,275m,D3,1,2,7/2,4.5,TOP3,EXCLUDED,ANALYST_TOP3,Timeform Analyst Verdict #1
+2026-08-19,Harlow,10:48,2,Tinks This,"UK LAY Harlow Trap 2,4",12,100,238m,D5,OUTSIDE_TOP3,3,9/2,5.5,TOP3,EXCLUDED,FORECAST_TOP3,"Timeform Betting Forecast top 3 (rank 3, 9/2; decimal 5.50)"
+2026-08-19,Harlow,10:48,4,Random Lou,"UK LAY Harlow Trap 2,4",12,100,238m,D5,2,4,5/1,6.0,OUTSIDE_TOP3,EXCLUDED,ANALYST_TOP3,Timeform Analyst Verdict #2
+2026-08-19,Harlow,11:21,2,Alfies Jet,"UK LAY Harlow Trap 2,4",12,100,238m,D4,OUTSIDE_TOP3,5,7/1,8.0,OUTSIDE_TOP3,RETAINED,,
+2026-08-19,Harlow,11:21,4,Fridays Ariana,"UK LAY Harlow Trap 2,4",12,100,238m,D4,OUTSIDE_TOP3,4,9/2,5.5,OUTSIDE_TOP3,RETAINED,,Forecast #4 reviewed (9/2; decimal 5.50); retained absent converging danger evidence
+2026-08-19,Harlow,12:29,2,Adamant Breeze,"UK LAY Harlow Trap 2,4",12,100,238m,D5,1,1,3/1,4.0,TOP3,EXCLUDED,ANALYST_TOP3,Timeform Analyst Verdict #1
+2026-08-19,Harlow,12:29,4,Come On Babe,"UK LAY Harlow Trap 2,4",12,100,238m,D5,OUTSIDE_TOP3,4,9/2,5.5,OUTSIDE_TOP3,RETAINED,,Forecast #4 reviewed (9/2; decimal 5.50); retained absent converging danger evidence
+2026-08-19,Harlow,13:37,2,Moaning Mccoist,"UK LAY Harlow Trap 2,4",12,100,238m,D4,3,3,6/1,7.0,BOUNDARY_TIE,EXCLUDED,ANALYST_TOP3,Timeform Analyst Verdict #3
+2026-08-19,Harlow,13:37,4,Shianns Blue,"UK LAY Harlow Trap 2,4",12,100,238m,D4,OUTSIDE_TOP3,3,6/1,7.0,BOUNDARY_TIE,RETAINED,,Forecast tie crosses third-place boundary; retained absent stronger evidence
+2026-08-19,Harlow,13:54,2,Comer Canal,"UK LAY Harlow Trap 2,4",12,100,415m,A7,3,3,11/2,6.5,BOUNDARY_TIE,EXCLUDED,ANALYST_TOP3,Timeform Analyst Verdict #3
+2026-08-19,Harlow,13:54,4,Bambina,"UK LAY Harlow Trap 2,4",12,100,415m,A7,OUTSIDE_TOP3,3,11/2,6.5,BOUNDARY_TIE,RETAINED,,Forecast tie crosses third-place boundary; retained absent stronger evidence
+2026-08-19,Harlow,14:11,2,Crystal Luna,"UK LAY Harlow Trap 2,4",12,100,238m,D5,3,3,9/2,5.5,BOUNDARY_TIE,EXCLUDED,ANALYST_TOP3,Timeform Analyst Verdict #3
+2026-08-19,Harlow,14:11,4,Catunda Remi,"UK LAY Harlow Trap 2,4",12,100,238m,D5,1,2,100/30,4.3333,TOP3,EXCLUDED,ANALYST_TOP3,Timeform Analyst Verdict #1
+2026-08-19,Harlow,18:11,2,My Fancy Ways,"UK LAY Harlow Trap 2,4",12,100,415m,A7,2,2,4/1,5.0,TOP3,EXCLUDED,ANALYST_TOP3,Timeform Analyst Verdict #2
+2026-08-19,Harlow,18:11,4,Syls Angel,"UK LAY Harlow Trap 2,4",12,100,415m,A7,3,3,5/1,6.0,BOUNDARY_TIE,EXCLUDED,ANALYST_TOP3,Timeform Analyst Verdict #3
+2026-08-19,Harlow,19:42,2,Sugar Tiger,"UK LAY Harlow Trap 2,4",12,100,238m,D5,OUTSIDE_TOP3,6,13/2,7.5,OUTSIDE_TOP3,RETAINED,,
+2026-08-19,Harlow,19:42,4,Hawkfield Impact,"UK LAY Harlow Trap 2,4",12,100,238m,D5,2,2,3/1,4.0,TOP3,EXCLUDED,ANALYST_TOP3,Timeform Analyst Verdict #2
+2026-08-19,Harlow,20:16,2,Small Tommy,"UK LAY Harlow Trap 2,4",12,100,238m,D5,OUTSIDE_TOP3,1,11/8,2.375,TOP3,EXCLUDED,FORECAST_TOP3,"Timeform Betting Forecast top 3 (rank 1, 11/8; decimal 2.38)"
+2026-08-19,Harlow,20:16,4,Wilbys Flyer,"UK LAY Harlow Trap 2,4",12,100,238m,D5,OUTSIDE_TOP3,6,10/1,11.0,OUTSIDE_TOP3,RETAINED,,
+2026-08-19,Harlow,20:34,2,Townsend Abby,"UK LAY Harlow Trap 2,4",12,100,415m,A7,3,2,100/30,4.3333,TOP3,EXCLUDED,ANALYST_TOP3,Timeform Analyst Verdict #3
+2026-08-19,Harlow,20:34,4,Savana Albert,"UK LAY Harlow Trap 2,4",12,100,415m,A7,1,1,5/2,3.5,TOP3,EXCLUDED,ANALYST_TOP3,Timeform Analyst Verdict #1
+2026-08-19,Harlow,21:09,2,Howsyerday Dolly,"UK LAY Harlow Trap 2,4",12,100,415m,A7,OUTSIDE_TOP3,4,9/2,5.5,OUTSIDE_TOP3,RETAINED,,Forecast #4 reviewed (9/2; decimal 5.50); retained absent converging danger evidence
+2026-08-19,Harlow,21:09,4,Slipalong Don,"UK LAY Harlow Trap 2,4",12,100,415m,A7,2,2,7/2,4.5,TOP3,EXCLUDED,ANALYST_TOP3,Timeform Analyst Verdict #2
+2026-08-19,Monmore,11:03,2,Epic Susie,"UK LAY Monmore Trap 2,5,6",4,100,,,,,,,,EXCLUDED,TIMEFORM_RACE_DISCARDED,Timeform race missing/incomplete or Analyst Verdict top 3 incomplete
+2026-08-19,Monmore,11:03,5,Black Scorpion,"UK LAY Monmore Trap 2,5,6",4,100,,,,,,,,EXCLUDED,TIMEFORM_RACE_DISCARDED,Timeform race missing/incomplete or Analyst Verdict top 3 incomplete
+2026-08-19,Monmore,11:03,6,Final Fernandes,"UK LAY Monmore Trap 2,5,6",4,100,,,,,,,,EXCLUDED,TIMEFORM_RACE_DISCARDED,Timeform race missing/incomplete or Analyst Verdict top 3 incomplete
+2026-08-19,Monmore,12:09,2,Stormy Bonito,"UK LAY Monmore Trap 2,5,6",4,100,480m,A9,OUTSIDE_TOP3,4,9/2,5.5,OUTSIDE_TOP3,RETAINED,,Forecast #4 reviewed (9/2; decimal 5.50); retained absent converging danger evidence
+2026-08-19,Monmore,12:09,5,Dunquin Brendan,"UK LAY Monmore Trap 2,5,6",4,100,480m,A9,OUTSIDE_TOP3,,,,NOT_FOUND,RETAINED,,
+2026-08-19,Monmore,12:09,6,Droopys Vanity,"UK LAY Monmore Trap 2,5,6",4,100,480m,A9,2,2,3/1,4.0,TOP3,EXCLUDED,ANALYST_TOP3,Timeform Analyst Verdict #2
+2026-08-19,Monmore,12:26,2,Denton Girl,"UK LAY Monmore Trap 2,5,6",4,100,480m,A7,OUTSIDE_TOP3,6,8/1,9.0,OUTSIDE_TOP3,RETAINED,,
+2026-08-19,Monmore,12:26,5,Tullymurry Skies,"UK LAY Monmore Trap 2,5,6",4,100,480m,A7,1,1,2/1,3.0,TOP3,EXCLUDED,ANALYST_TOP3,Timeform Analyst Verdict #1
+2026-08-19,Monmore,12:26,6,Aero Maisie,"UK LAY Monmore Trap 2,5,6",4,100,480m,A7,OUTSIDE_TOP3,4,6/1,7.0,OUTSIDE_TOP3,RETAINED,,Forecast #4 reviewed (6/1; decimal 7.00); retained absent converging danger evidence
+2026-08-19,Monmore,12:42,2,Return Fire,"UK LAY Monmore Trap 2,5,6",4,100,264m,D2,OUTSIDE_TOP3,6,19/2,10.5,OUTSIDE_TOP3,RETAINED,,
+2026-08-19,Monmore,12:42,5,Oblivion,"UK LAY Monmore Trap 2,5,6",4,100,264m,D2,OUTSIDE_TOP3,4,7/1,8.0,OUTSIDE_TOP3,RETAINED,,Forecast #4 reviewed (7/1; decimal 8.00); retained absent converging danger evidence
+2026-08-19,Monmore,12:42,6,Suave Echo,"UK LAY Monmore Trap 2,5,6",4,100,264m,D2,OUTSIDE_TOP3,5,17/2,9.5,OUTSIDE_TOP3,RETAINED,,
+2026-08-19,Monmore,13:46,2,Fourpenny Jack,"UK LAY Monmore Trap 2,5,6",4,100,264m,D4,OUTSIDE_TOP3,4,4/1,5.0,OUTSIDE_TOP3,RETAINED,,Forecast #4 reviewed (4/1; decimal 5.00); retained absent converging danger evidence
+2026-08-19,Monmore,13:46,5,Elderberry Misty,"UK LAY Monmore Trap 2,5,6",4,100,264m,D4,2,1,100/30,4.3333,TOP3,EXCLUDED,ANALYST_TOP3,Timeform Analyst Verdict #2
+2026-08-19,Monmore,13:46,6,My Premiercounty,"UK LAY Monmore Trap 2,5,6",4,100,264m,D4,OUTSIDE_TOP3,6,13/2,7.5,OUTSIDE_TOP3,RETAINED,,
+2026-08-19,Nottingham,11:25,6,Noelles Pelo,UK LAY Nottingham Trap 6,1.01,100,,,,,,,,EXCLUDED,TIMEFORM_RACE_DISCARDED,Timeform race missing/incomplete or Analyst Verdict top 3 incomplete
+2026-08-19,Nottingham,11:41,6,Dairyland Roxy,UK LAY Nottingham Trap 6,1.01,100,500m,A6,OUTSIDE_TOP3,4,11/2,6.5,OUTSIDE_TOP3,RETAINED,,Forecast #4 reviewed (11/2; decimal 6.50); retained absent converging danger evidence
+2026-08-19,Nottingham,12:14,6,Flame Wood,UK LAY Nottingham Trap 6,1.01,100,305m,D3,3,3,4/1,5.0,TOP3,EXCLUDED,ANALYST_TOP3,Timeform Analyst Verdict #3
+2026-08-19,Nottingham,12:48,6,Annadown Guggy,UK LAY Nottingham Trap 6,1.01,100,500m,A3,2,2,11/4,3.75,TOP3,EXCLUDED,ANALYST_TOP3,Timeform Analyst Verdict #2
+2026-08-19,Nottingham,13:06,6,Blackfriars Gold,UK LAY Nottingham Trap 6,1.01,100,500m,HP,2,1,3/1,4.0,TOP3,EXCLUDED,ANALYST_TOP3,Timeform Analyst Verdict #2
+2026-08-19,Nottingham,13:36,6,Noirs Fly,UK LAY Nottingham Trap 6,1.01,100,500m,HP,1,1,15/8,2.875,TOP3,EXCLUDED,ANALYST_TOP3,Timeform Analyst Verdict #1
+2026-08-19,Romford,19:11,1,Aint Got No Cash,"UK LAY Romford Trap 1,2,6",4,100,400m,A12,OUTSIDE_TOP3,6,10/1,11.0,OUTSIDE_TOP3,RETAINED,,
+2026-08-19,Romford,19:11,2,Mohican Honey,"UK LAY Romford Trap 1,2,6",4,100,400m,A12,1,2,9/4,3.25,TOP3,EXCLUDED,ANALYST_TOP3,Timeform Analyst Verdict #1
+2026-08-19,Romford,19:11,6,Moaning Dolly,"UK LAY Romford Trap 1,2,6",4,100,400m,A12,OUTSIDE_TOP3,5,15/2,8.5,OUTSIDE_TOP3,RETAINED,,
+2026-08-19,Romford,20:01,1,Hollywood Lilly,"UK LAY Romford Trap 1,2,6",4,100,400m,A9,OUTSIDE_TOP3,4,5/1,6.0,OUTSIDE_TOP3,RETAINED,,Forecast #4 reviewed (5/1; decimal 6.00); retained absent converging danger evidence
+2026-08-19,Romford,20:01,2,Luminous Flyer,"UK LAY Romford Trap 1,2,6",4,100,400m,A9,3,1,3/1,4.0,TOP3,EXCLUDED,ANALYST_TOP3,Timeform Analyst Verdict #3
+2026-08-19,Romford,20:01,6,Da Young Lad,"UK LAY Romford Trap 1,2,6",4,100,400m,A9,1,1,3/1,4.0,TOP3,EXCLUDED,ANALYST_TOP3,Timeform Analyst Verdict #1
+2026-08-19,Sunderland,17:43,4,Ballyquin Izzy,UK LAY Sunderland Trap 4,9,100,450m,A7,2,2,3/1,4.0,TOP3,EXCLUDED,ANALYST_TOP3,Timeform Analyst Verdict #2
+2026-08-19,Towcester,11:14,1,Salacres Merkel,"UK LAY Towcester Trap 1,5,6",4,100,,,,,,,,EXCLUDED,TIMEFORM_RACE_DISCARDED,Timeform race missing/incomplete or Analyst Verdict top 3 incomplete
+2026-08-19,Towcester,11:14,5,Ballymac Andre,"UK LAY Towcester Trap 1,5,6",4,100,,,,,,,,EXCLUDED,TIMEFORM_RACE_DISCARDED,Timeform race missing/incomplete or Analyst Verdict top 3 incomplete
+2026-08-19,Towcester,11:14,6,Jaz Style,"UK LAY Towcester Trap 1,5,6",4,100,,,,,,,,EXCLUDED,TIMEFORM_RACE_DISCARDED,Timeform race missing/incomplete or Analyst Verdict top 3 incomplete
+2026-08-19,Towcester,11:30,1,Likely Lady,"UK LAY Towcester Trap 1,5,6",4,100,,,,,,,,EXCLUDED,TIMEFORM_RACE_DISCARDED,Timeform race missing/incomplete or Analyst Verdict top 3 incomplete
+2026-08-19,Towcester,11:30,5,Cockneyloudmouth,"UK LAY Towcester Trap 1,5,6",4,100,,,,,,,,EXCLUDED,TIMEFORM_RACE_DISCARDED,Timeform race missing/incomplete or Analyst Verdict top 3 incomplete
+2026-08-19,Towcester,11:30,6,Rowington Ruse,"UK LAY Towcester Trap 1,5,6",4,100,,,,,,,,EXCLUDED,TIMEFORM_RACE_DISCARDED,Timeform race missing/incomplete or Analyst Verdict top 3 incomplete
+2026-08-19,Towcester,12:03,1,Ardera Lass,"UK LAY Towcester Trap 1,5,6",4,100,270m,D5,3,1,11/10,2.1,TOP3,EXCLUDED,ANALYST_TOP3,Timeform Analyst Verdict #3
+2026-08-19,Towcester,12:03,5,Rosegarland Gina,"UK LAY Towcester Trap 1,5,6",4,100,270m,D5,2,2,4/1,5.0,TOP3,EXCLUDED,ANALYST_TOP3,Timeform Analyst Verdict #2
+2026-08-19,Towcester,12:03,6,Coolemore South,"UK LAY Towcester Trap 1,5,6",4,100,270m,D5,OUTSIDE_TOP3,5,13/2,7.5,OUTSIDE_TOP3,RETAINED,,
+2026-08-19,Towcester,12:53,1,Salacres Farage,"UK LAY Towcester Trap 1,5,6",4,100,500m,A5,OUTSIDE_TOP3,6,15/2,8.5,OUTSIDE_TOP3,RETAINED,,
+2026-08-19,Towcester,12:53,5,Mums Image,"UK LAY Towcester Trap 1,5,6",4,100,500m,A5,OUTSIDE_TOP3,4,13/2,7.5,OUTSIDE_TOP3,RETAINED,,Forecast #4 reviewed (13/2; decimal 7.50); retained absent converging danger evidence
+2026-08-19,Towcester,12:53,6,So Its Flash,"UK LAY Towcester Trap 1,5,6",4,100,500m,A5,2,3,9/2,5.5,TOP3,EXCLUDED,ANALYST_TOP3,Timeform Analyst Verdict #2
+2026-08-19,Towcester,13:26,1,Choices Jess,"UK LAY Towcester Trap 1,5,6",4,100,270m,D4,OUTSIDE_TOP3,6,19/2,10.5,OUTSIDE_TOP3,RETAINED,,
+2026-08-19,Towcester,13:26,5,Salacresgovernor,"UK LAY Towcester Trap 1,5,6",4,100,270m,D4,1,2,5/2,3.5,TOP3,EXCLUDED,ANALYST_TOP3,Timeform Analyst Verdict #1
+2026-08-19,Towcester,13:26,6,Fabulous Lara,"UK LAY Towcester Trap 1,5,6",4,100,270m,D4,OUTSIDE_TOP3,4,11/2,6.5,OUTSIDE_TOP3,RETAINED,,Forecast #4 reviewed (11/2; decimal 6.50); retained absent converging danger evidence
+2026-08-19,Towcester,13:41,1,Choices Bev,"UK LAY Towcester Trap 1,5,6",4,100,270m,D3,OUTSIDE_TOP3,5,13/2,7.5,OUTSIDE_TOP3,RETAINED,,
+2026-08-19,Towcester,13:41,5,Dublin Jimmy,"UK LAY Towcester Trap 1,5,6",4,100,270m,D3,OUTSIDE_TOP3,6,7/1,8.0,OUTSIDE_TOP3,RETAINED,,
+2026-08-19,Towcester,13:41,6,Amys Gem,"UK LAY Towcester Trap 1,5,6",4,100,270m,D3,3,3,11/2,6.5,BOUNDARY_TIE,EXCLUDED,ANALYST_TOP3,Timeform Analyst Verdict #3
+2026-08-19,Towcester,14:14,1,Wessex Duchess,"UK LAY Towcester Trap 1,5,6",4,100,270m,D4,OUTSIDE_TOP3,6,10/1,11.0,OUTSIDE_TOP3,RETAINED,,
+2026-08-19,Towcester,14:14,5,Plaza Kathleen,"UK LAY Towcester Trap 1,5,6",4,100,270m,D4,1,1,15/8,2.875,TOP3,EXCLUDED,ANALYST_TOP3,Timeform Analyst Verdict #1
+2026-08-19,Towcester,14:14,6,Trapstyle Wee,"UK LAY Towcester Trap 1,5,6",4,100,270m,D4,OUTSIDE_TOP3,3,4/1,5.0,BOUNDARY_TIE,RETAINED,,Forecast tie crosses third-place boundary; retained absent stronger evidence
+2026-08-19,Valley,13:49,1,Crokers Gloria,"UK LAY Valley Trap 1,3,4",4,100,260m,D6,OUTSIDE_TOP3,3,9/2,5.5,BOUNDARY_TIE,RETAINED,,Forecast tie crosses third-place boundary; retained absent stronger evidence
+2026-08-19,Valley,13:49,3,Ballygibba Liv,"UK LAY Valley Trap 1,3,4",4,100,260m,D6,1,2,3/1,4.0,TOP3,EXCLUDED,ANALYST_TOP3,Timeform Analyst Verdict #1
+2026-08-19,Valley,13:49,4,Runaway May,"UK LAY Valley Trap 1,3,4",4,100,260m,D6,2,1,11/8,2.375,TOP3,EXCLUDED,ANALYST_TOP3,Timeform Analyst Verdict #2
+2026-08-19,Valley,14:08,1,Afan Louie,"UK LAY Valley Trap 1,3,4",4,100,260m,D4,OUTSIDE_TOP3,6,10/1,11.0,OUTSIDE_TOP3,RETAINED,,
+2026-08-19,Valley,14:08,3,Chadwell Emra,"UK LAY Valley Trap 1,3,4",4,100,260m,D4,1,1,5/6,1.8333,TOP3,EXCLUDED,ANALYST_TOP3,Timeform Analyst Verdict #1
+2026-08-19,Valley,14:08,4,Chadwell Tyson,"UK LAY Valley Trap 1,3,4",4,100,260m,D4,3,3,9/2,5.5,TOP3,EXCLUDED,ANALYST_TOP3,Timeform Analyst Verdict #3
+2026-08-19,Valley,14:44,1,Hawkfield Cassie,"UK LAY Valley Trap 1,3,4",4,100,260m,D5,OUTSIDE_TOP3,6,13/2,7.5,OUTSIDE_TOP3,RETAINED,,
+2026-08-19,Valley,14:44,3,Home Colleen,"UK LAY Valley Trap 1,3,4",4,100,260m,D5,OUTSIDE_TOP3,4,9/2,5.5,OUTSIDE_TOP3,RETAINED,,Forecast #4 reviewed (9/2; decimal 5.50); retained absent converging danger evidence
+2026-08-19,Valley,14:44,4,Dry Morning,"UK LAY Valley Trap 1,3,4",4,100,260m,D5,OUTSIDE_TOP3,5,5/1,6.0,OUTSIDE_TOP3,RETAINED,,
+2026-08-19,Valley,15:03,1,Hawkfield Jackie,"UK LAY Valley Trap 1,3,4",4,100,460m,A5,OUTSIDE_TOP3,5,7/1,8.0,OUTSIDE_TOP3,RETAINED,,
+2026-08-19,Valley,15:03,3,Trump World,"UK LAY Valley Trap 1,3,4",4,100,460m,A5,2,4,5/1,6.0,OUTSIDE_TOP3,EXCLUDED,ANALYST_TOP3,Timeform Analyst Verdict #2
+2026-08-19,Valley,15:03,4,Rollaway Willow,"UK LAY Valley Trap 1,3,4",4,100,460m,A5,OUTSIDE_TOP3,3,9/2,5.5,TOP3,EXCLUDED,FORECAST_TOP3,"Timeform Betting Forecast top 3 (rank 3, 9/2; decimal 5.50)"
+2026-08-19,Valley,15:41,1,Mongys Sydney,"UK LAY Valley Trap 1,3,4",4,100,460m,A5,2,4,13/2,7.5,OUTSIDE_TOP3,EXCLUDED,ANALYST_TOP3,Timeform Analyst Verdict #2
+2026-08-19,Valley,15:41,3,Hawkfield Elvis,"UK LAY Valley Trap 1,3,4",4,100,460m,A5,1,1,5/6,1.8333,TOP3,EXCLUDED,ANALYST_TOP3,Timeform Analyst Verdict #1
+2026-08-19,Valley,15:41,4,Aldean Spice,"UK LAY Valley Trap 1,3,4",4,100,460m,A5,OUTSIDE_TOP3,5,7/1,8.0,OUTSIDE_TOP3,RETAINED,,
+2026-08-19,Valley,16:18,1,Miss Eske,"UK LAY Valley Trap 1,3,4",4,100,260m,D5,2,1,2/1,3.0,TOP3,EXCLUDED,ANALYST_TOP3,Timeform Analyst Verdict #2
+2026-08-19,Valley,16:18,3,Playdate Jasper,"UK LAY Valley Trap 1,3,4",4,100,260m,D5,OUTSIDE_TOP3,5,8/1,9.0,OUTSIDE_TOP3,RETAINED,,
+2026-08-19,Valley,16:18,4,Mylerstown Sage,"UK LAY Valley Trap 1,3,4",4,100,260m,D5,1,2,3/1,4.0,TOP3,EXCLUDED,ANALYST_TOP3,Timeform Analyst Verdict #1
+2026-08-19,Yarmouth,18:31,1,Seeyouatlake,"UK LAY Yarmouth Trap 1,3,6",6,50,462m,A5,2,3,9/2,5.5,TOP3,EXCLUDED,ANALYST_TOP3,Timeform Analyst Verdict #2
+2026-08-19,Yarmouth,18:31,3,Giveusaping,"UK LAY Yarmouth Trap 1,3,6",6,50,462m,A5,1,1,2/1,3.0,TOP3,EXCLUDED,ANALYST_TOP3,Timeform Analyst Verdict #1
+2026-08-19,Yarmouth,18:31,6,Melbury Loki,"UK LAY Yarmouth Trap 1,3,6",6,50,462m,A5,OUTSIDE_TOP3,6,7/1,8.0,OUTSIDE_TOP3,RETAINED,,
+2026-08-19,Yarmouth,20:13,1,I Feel Fine,"UK LAY Yarmouth Trap 1,3,6",6,50,462m,A7,1,2,3/1,4.0,TOP3,EXCLUDED,ANALYST_TOP3,Timeform Analyst Verdict #1
+2026-08-19,Yarmouth,20:13,3,Cansherun,"UK LAY Yarmouth Trap 1,3,6",6,50,462m,A7,3,3,4/1,5.0,TOP3,EXCLUDED,ANALYST_TOP3,Timeform Analyst Verdict #3
+2026-08-19,Yarmouth,20:13,6,Now Listen Honey,"UK LAY Yarmouth Trap 1,3,6",6,50,462m,A7,OUTSIDE_TOP3,5,10/1,11.0,OUTSIDE_TOP3,RETAINED,,

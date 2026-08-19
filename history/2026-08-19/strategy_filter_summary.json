@@ -1,0 +1,17 @@
+{
+  "date": "2026-08-19",
+  "malformed_races": 0,
+  "malformed_rows": [],
+  "six_runner_races": 57,
+  "raw_candidates": 99,
+  "complete_timeform_candidates": 89,
+  "timeform_race_discards": 10,
+  "analyst_top3_exclusions": 43,
+  "forecast_top3_exclusions": 3,
+  "forecast_boundary_ties": 5,
+  "forecast4_reviewed": 13,
+  "additional_risk_exclusions": 0,
+  "retained": 43,
+  "source_config": "authoritative 13-strategy six-runner baseline 2026-08-17",
+  "complete_timeform_pct": 89.9
+}
