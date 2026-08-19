@@ -1,0 +1,215 @@
+name: 00 - Bootstrap Migration
+
+on:
+  workflow_dispatch:
+  push:
+    branches: [main]
+    paths: ['.github/workflows/00-bootstrap-migration.yml']
+
+permissions:
+  contents: write
+
+jobs:
+  migrate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Copy Daily Strategy Filter assets from legacy repository
+        shell: bash
+        run: |
+          set -euo pipefail
+          rm -rf /tmp/legacy
+          git clone --depth 1 https://github.com/Watkins150/daily-betting-tips.git /tmp/legacy
+          mkdir -p scripts racecards timeform .github/workflows
+          cp /tmp/legacy/scripts/greyhound_racecards_downloader.py scripts/
+          cp /tmp/legacy/scripts/timeform_race_analysis.py scripts/
+          cp /tmp/legacy/scripts/run_strategy_filter.py scripts/
+          cp /tmp/legacy/scripts/manual_daily_strategy_filter.py scripts/
+          cp -a /tmp/legacy/racecards/. racecards/ || true
+          cp -a /tmp/legacy/timeform/. timeform/ || true
+          for f in strategy_filtered_tips.csv strategy_filter_audit.csv strategy_filter_removed.csv strategy_filter_summary.json strategy_filter_audit_2026-08-19.txt; do
+            [ -f "/tmp/legacy/$f" ] && cp "/tmp/legacy/$f" .
+          done
+          cp /tmp/legacy/.github/workflows/daily-racecards.yml .github/workflows/01-sporting-life-racecards.yml
+          cp /tmp/legacy/.github/workflows/daily-timeform-analysis.yml .github/workflows/02-timeform-analysis.yml
+          python - <<'PY'
+          from pathlib import Path
+          import re
+          p=Path('.github/workflows/01-sporting-life-racecards.yml')
+          s=p.read_text()
+          s=s.replace('name: Daily Greyhound Racecards','name: 01 - Sporting Life Racecards')
+          s=s.replace("- '.github/workflows/daily-racecards.yml'","- '.github/workflows/01-sporting-life-racecards.yml'")
+          s=re.sub(r"  schedule:\n(?:    - cron:.*\n      timezone:.*\n)+", "  schedule:\n    - cron: '0 9 * * *'\n      timezone: 'Europe/London'\n", s)
+          p.write_text(s)
+          p=Path('.github/workflows/02-timeform-analysis.yml')
+          s=p.read_text()
+          s=s.replace('name: Daily Timeform Greyhound Analysis','name: 02 - Timeform Analysis')
+          s=s.replace("- '.github/workflows/daily-timeform-analysis.yml'","- '.github/workflows/02-timeform-analysis.yml'")
+          s=re.sub(r"  schedule:\n(?:    - cron:.*\n      timezone:.*\n)+", "  schedule:\n    - cron: '15 9 * * *'\n      timezone: 'Europe/London'\n", s)
+          p.write_text(s)
+          PY
+      - name: Create scheduled strategy filter workflow
+        shell: bash
+        run: |
+          cat > .github/workflows/03-daily-strategy-filter.yml <<'YAML'
+          name: 03 - Daily Strategy Filter
+          on:
+            workflow_dispatch:
+            schedule:
+              - cron: '30 9 * * *'
+                timezone: 'Europe/London'
+          permissions:
+            contents: write
+          concurrency:
+            group: daily-greyhound-strategy-filter
+            cancel-in-progress: true
+          jobs:
+            filter:
+              runs-on: ubuntu-latest
+              env:
+                TZ: Europe/London
+              steps:
+                - uses: actions/checkout@v4
+                - name: Synchronize to latest main
+                  run: |
+                    git fetch origin main
+                    git reset --hard origin/main
+                - name: Pre-flight source freshness
+                  run: |
+                    python - <<'PY'
+                    import csv
+                    from datetime import datetime
+                    from zoneinfo import ZoneInfo
+                    today=datetime.now(ZoneInfo('Europe/London')).date().isoformat()
+                    checks=[('racecards/latest_racecards.csv','date'),('racecards/latest_audit.csv','date'),('timeform/latest_timeform_races.csv','Date')]
+                    for path,col in checks:
+                        with open(path,encoding='utf-8-sig',newline='') as f: rows=list(csv.DictReader(f))
+                        if not rows or any(r.get(col)!=today for r in rows): raise SystemExit(f'STALE OR INVALID: {path}')
+                    print('Pre-flight SUCCESS for',today)
+                    PY
+                - name: Run strategy filter with audit logging
+                  run: python scripts/run_strategy_filter.py | tee strategy_filter_run.log
+                - name: Build removed-only audit
+                  run: |
+                    python - <<'PY'
+                    import csv
+                    with open('strategy_filter_audit.csv',encoding='utf-8',newline='') as f: rows=list(csv.DictReader(f))
+                    fields=list(rows[0]) if rows else []
+                    removed=[r for r in rows if r.get('Status')=='EXCLUDED']
+                    with open('strategy_filter_removed.csv','w',encoding='utf-8',newline='') as f:
+                        w=csv.DictWriter(f,fieldnames=fields); w.writeheader(); w.writerows(removed)
+                    PY
+                - name: Publish and archive outputs
+                  run: |
+                    DATE=$(TZ=Europe/London date +%F)
+                    mkdir -p history/$DATE
+                    cp strategy_filtered_tips.csv strategy_filter_audit.csv strategy_filter_removed.csv strategy_filter_summary.json strategy_filter_run.log history/$DATE/
+                    git config user.name 'github-actions[bot]'
+                    git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+                    git add strategy_filtered_tips.csv strategy_filter_audit.csv strategy_filter_removed.csv strategy_filter_summary.json strategy_filter_run.log history/
+                    git diff --cached --quiet || git commit -m "Publish Daily Strategy Filter $DATE"
+                    git pull --rebase origin main
+                    git push origin HEAD:main
+          YAML
+      - name: Create manual full-pipeline workflow
+        shell: bash
+        run: |
+          cat > .github/workflows/99-manual-full-pipeline.yml <<'YAML'
+          name: Manual - Run Full Pipeline
+          on:
+            workflow_dispatch:
+          permissions:
+            contents: write
+          concurrency:
+            group: manual-daily-greyhound-strategy-filter
+            cancel-in-progress: false
+          jobs:
+            full-run:
+              runs-on: ubuntu-latest
+              env:
+                TZ: Europe/London
+                PYTHONUNBUFFERED: '1'
+              steps:
+                - uses: actions/checkout@v4
+                - uses: actions/setup-python@v5
+                  with:
+                    python-version: '3.12'
+                - run: pip install --upgrade requests beautifulsoup4
+                - name: Step 1 - Sporting Life
+                  run: |
+                    python scripts/greyhound_racecards_downloader.py
+                    DATE=$(TZ=Europe/London date +%F)
+                    mkdir -p racecards/archive
+                    cp scripts/greyhound_racecards_${DATE}.csv racecards/latest_racecards.csv
+                    cp scripts/greyhound_racecard_audit_${DATE}.csv racecards/latest_audit.csv
+                    cp scripts/greyhound_racecards_${DATE}.csv racecards/archive/
+                    cp scripts/greyhound_racecard_audit_${DATE}.csv racecards/archive/
+                - name: Step 3 - Timeform
+                  run: |
+                    python scripts/timeform_race_analysis.py
+                    DATE=$(TZ=Europe/London date +%F)
+                    mkdir -p timeform/archive
+                    cp scripts/timeform_races_${DATE}.csv timeform/latest_timeform_races.csv
+                    cp scripts/timeform_races_${DATE}.csv timeform/archive/
+                - name: Filter and audit
+                  run: |
+                    python scripts/run_strategy_filter.py | tee strategy_filter_run.log
+                    python - <<'PY'
+                    import csv
+                    with open('strategy_filter_audit.csv',encoding='utf-8',newline='') as f: rows=list(csv.DictReader(f))
+                    fields=list(rows[0]) if rows else []
+                    removed=[r for r in rows if r.get('Status')=='EXCLUDED']
+                    with open('strategy_filter_removed.csv','w',encoding='utf-8',newline='') as f:
+                        w=csv.DictWriter(f,fieldnames=fields); w.writeheader(); w.writerows(removed)
+                    PY
+                - name: Publish everything
+                  run: |
+                    DATE=$(TZ=Europe/London date +%F)
+                    mkdir -p history/$DATE
+                    cp strategy_filtered_tips.csv strategy_filter_audit.csv strategy_filter_removed.csv strategy_filter_summary.json strategy_filter_run.log history/$DATE/
+                    git config user.name 'github-actions[bot]'
+                    git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+                    git add racecards timeform strategy_filtered_tips.csv strategy_filter_audit.csv strategy_filter_removed.csv strategy_filter_summary.json strategy_filter_run.log history/
+                    git diff --cached --quiet || git commit -m "Manual full Daily Strategy Filter $DATE"
+                    git pull --rebase origin main
+                    git push origin HEAD:main
+          YAML
+      - name: Write repository README
+        shell: bash
+        run: |
+          cat > README.md <<'MD'
+          # Daily Greyhound Strategy Filter
+
+          Production repository for the UK Daily Greyhound Strategy Filter.
+
+          ## Daily schedule (Europe/London)
+          - **09:00** - Sporting Life racecard scrape
+          - **09:15** - Timeform analysis scrape
+          - **09:30** - Strategy matching, Timeform danger filtering, BF Bot CSV publication and audit logging
+
+          ## Main output
+          `strategy_filtered_tips.csv`
+
+          Raw URL:
+          `https://raw.githubusercontent.com/Watkins150/daily-greyhound-strategy-filter/main/strategy_filtered_tips.csv`
+
+          ## Manual run
+          GitHub **Actions** -> **Manual - Run Full Pipeline** -> **Run workflow**.
+
+          ## Audit outputs
+          - `strategy_filter_summary.json` - counts from raw candidates through retained selections
+          - `strategy_filter_audit.csv` - every candidate and final status
+          - `strategy_filter_removed.csv` - excluded candidates only
+          - `history/YYYY-MM-DD/` - archived daily outputs
+
+          ## Migration
+          This repository was separated from `Watkins150/daily-betting-tips`. The legacy repository should remain enabled until this repository is manually tested and verified.
+          MD
+      - name: Commit migration
+        run: |
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add .
+          git commit -m 'Migrate Daily Greyhound Strategy Filter into dedicated repository' || true
+          git pull --rebase origin main
+          git push origin HEAD:main
