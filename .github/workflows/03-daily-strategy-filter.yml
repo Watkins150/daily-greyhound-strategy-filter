@@ -2,7 +2,7 @@ name: 03 - Daily Strategy Filter
 on:
   workflow_dispatch:
   schedule:
-    - cron: '30 9 * * *'
+    - cron: '0 8 * * *'
       timezone: 'Europe/London'
 permissions:
   contents: write
