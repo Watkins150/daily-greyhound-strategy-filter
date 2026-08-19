@@ -2,7 +2,7 @@ name: 01 - Sporting Life Racecards
 on:
   workflow_dispatch:
   schedule:
-    - cron: '0 9 * * *'
+    - cron: '30 7 * * *'
       timezone: 'Europe/London'
 permissions:
   contents: write
