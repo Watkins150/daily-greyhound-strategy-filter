@@ -3,9 +3,10 @@
 Dedicated production repository for the UK Daily Greyhound Strategy Filter.
 
 ## Daily schedule — Europe/London
-- **09:00** — Sporting Life racecard scrape
-- **09:15** — Timeform analysis scrape
-- **09:30** — strategy matching, Timeform filtering, audit logging and BF Bot CSV publication
+- **07:30** — Sporting Life racecard scrape
+- **07:45** — Timeform analysis scrape
+- **08:00** — strategy matching, Timeform filtering, audit logging and BF Bot CSV publication
+- **08:15** — ChatGPT status check/notification
 
 ## Manual run
 GitHub **Actions → Manual - Run Full Pipeline → Run workflow**.
