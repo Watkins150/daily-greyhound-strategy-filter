@@ -1,0 +1,60 @@
+name: Manual - Run Full Pipeline
+on:
+  workflow_dispatch:
+permissions:
+  contents: write
+concurrency:
+  group: manual-daily-greyhound-strategy-filter
+  cancel-in-progress: false
+jobs:
+  full-run:
+    runs-on: ubuntu-latest
+    env:
+      TZ: Europe/London
+      PYTHONUNBUFFERED: '1'
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - run: pip install --upgrade requests beautifulsoup4
+      - name: Step 1 - Sporting Life
+        run: |
+          python scripts/greyhound_racecards_downloader.py
+          DATE=$(TZ=Europe/London date +%F)
+          mkdir -p racecards/archive
+          cp scripts/greyhound_racecards_${DATE}.csv racecards/latest_racecards.csv
+          cp scripts/greyhound_racecard_audit_${DATE}.csv racecards/latest_audit.csv
+          cp scripts/greyhound_racecards_${DATE}.csv racecards/archive/
+          cp scripts/greyhound_racecard_audit_${DATE}.csv racecards/archive/
+      - name: Step 3 - Timeform
+        run: |
+          python scripts/timeform_race_analysis.py
+          DATE=$(TZ=Europe/London date +%F)
+          mkdir -p timeform/archive
+          cp scripts/timeform_races_${DATE}.csv timeform/latest_timeform_races.csv
+          cp scripts/timeform_races_${DATE}.csv timeform/archive/
+      - name: Run strategy filter
+        run: python scripts/run_strategy_filter.py | tee strategy_filter_run.log
+      - name: Build removed-only audit
+        run: |
+          python - <<'PY'
+          import csv
+          with open('strategy_filter_audit.csv',encoding='utf-8',newline='') as f: rows=list(csv.DictReader(f))
+          fields=list(rows[0]) if rows else []
+          removed=[r for r in rows if r.get('Status')=='EXCLUDED']
+          with open('strategy_filter_removed.csv','w',encoding='utf-8',newline='') as f:
+              w=csv.DictWriter(f,fieldnames=fields);w.writeheader();w.writerows(removed)
+          PY
+      - name: Publish everything
+        run: |
+          DATE=$(TZ=Europe/London date +%F)
+          mkdir -p history/$DATE
+          cp strategy_filtered_tips.csv strategy_filter_audit.csv strategy_filter_removed.csv strategy_filter_summary.json strategy_filter_run.log history/$DATE/
+          printf '%s\n' "$DATE" > .daily_strategy_filter_last_success.txt
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add racecards timeform strategy_filtered_tips.csv strategy_filter_audit.csv strategy_filter_removed.csv strategy_filter_summary.json strategy_filter_run.log history/ .daily_strategy_filter_last_success.txt
+          git diff --cached --quiet || git commit -m "Manual full Daily Strategy Filter $DATE"
+          git pull --rebase origin main
+          git push origin HEAD:main
