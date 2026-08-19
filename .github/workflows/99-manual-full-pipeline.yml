@@ -1,6 +1,9 @@
 name: Manual - Run Full Pipeline
 on:
   workflow_dispatch:
+  push:
+    branches: [main]
+    paths: ['.manual_full_pipeline_trigger.txt']
 permissions:
   contents: write
 concurrency:
