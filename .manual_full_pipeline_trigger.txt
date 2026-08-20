@@ -1,1 +1,1 @@
-2026-08-19 manual end-to-end migration validation
+2026-08-20 manual recovery after scheduled run failure
