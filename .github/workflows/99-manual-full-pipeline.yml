@@ -1,59 +1,146 @@
 name: Daily Greyhound Strategy Filter - Full Pipeline
+
 on:
+  # Keep both manual options exactly as before.
   workflow_dispatch:
-  schedule:
-    - cron: '30 7 * * *'
-      timezone: 'Europe/London'
   push:
     branches: [main]
     paths: ['.manual_full_pipeline_trigger.txt']
+  schedule:
+    # Primary run: later start gives Sporting Life/Timeform more time to settle.
+    - cron: '0 8 * * *'
+      timezone: 'Europe/London'
+    # Recovery/watchdog run: exits harmlessly if today's primary run succeeded.
+    - cron: '30 8 * * *'
+      timezone: 'Europe/London'
+
 permissions:
   contents: write
+
 concurrency:
   group: daily-greyhound-strategy-filter-full-pipeline
   cancel-in-progress: false
+
 jobs:
   full-run:
     runs-on: ubuntu-latest
     env:
       TZ: Europe/London
       PYTHONUNBUFFERED: '1'
+
     steps:
       - uses: actions/checkout@v4
+
+      - name: Scheduled-run success guard
+        id: guard
+        shell: bash
+        run: |
+          TODAY=$(TZ=Europe/London date +%F)
+          if [[ "${{ github.event_name }}" == "schedule" ]] && \
+             [[ -f .daily_strategy_filter_last_success.txt ]] && \
+             [[ "$(tr -d '\r\n' < .daily_strategy_filter_last_success.txt)" == "$TODAY" ]]; then
+            echo "Today's Strategy Filter already completed successfully: $TODAY"
+            echo "skip=true" >> "$GITHUB_OUTPUT"
+          else
+            echo "Pipeline run required for $TODAY (${GITHUB_EVENT_NAME})."
+            echo "skip=false" >> "$GITHUB_OUTPUT"
+          fi
+
+      - name: Set initial diagnostic stage
+        if: steps.guard.outputs.skip != 'true'
+        run: echo "Environment setup" > .pipeline_stage
+
       - uses: actions/setup-python@v5
+        if: steps.guard.outputs.skip != 'true'
         with:
           python-version: '3.12'
-      - run: pip install --upgrade requests beautifulsoup4
+
+      - name: Install dependencies
+        if: steps.guard.outputs.skip != 'true'
+        run: pip install --upgrade requests beautifulsoup4
+
       - name: Step 1 - Sporting Life
+        if: steps.guard.outputs.skip != 'true'
+        shell: bash
         run: |
-          python scripts/greyhound_racecards_downloader.py
+          echo "Sporting Life" > .pipeline_stage
+          retry() {
+            local attempts=3
+            local delay=180
+            local n=1
+            until "$@"; do
+              rc=$?
+              if [[ $n -ge $attempts ]]; then
+                echo "Command failed after $attempts attempts (exit $rc)."
+                return $rc
+              fi
+              echo "Attempt $n failed; retrying in ${delay}s..."
+              n=$((n+1))
+              sleep "$delay"
+            done
+          }
+          retry bash -o pipefail -c 'python scripts/greyhound_racecards_downloader.py 2>&1 | tee sporting_life_run.log'
           DATE=$(TZ=Europe/London date +%F)
           mkdir -p racecards/archive
           cp scripts/greyhound_racecards_${DATE}.csv racecards/latest_racecards.csv
           cp scripts/greyhound_racecard_audit_${DATE}.csv racecards/latest_audit.csv
           cp scripts/greyhound_racecards_${DATE}.csv racecards/archive/
           cp scripts/greyhound_racecard_audit_${DATE}.csv racecards/archive/
+
       - name: Step 2 - Timeform
+        if: steps.guard.outputs.skip != 'true'
+        shell: bash
         run: |
-          python scripts/timeform_race_analysis.py
+          echo "Timeform" > .pipeline_stage
+          retry() {
+            local attempts=3
+            local delay=180
+            local n=1
+            until "$@"; do
+              rc=$?
+              if [[ $n -ge $attempts ]]; then
+                echo "Command failed after $attempts attempts (exit $rc)."
+                return $rc
+              fi
+              echo "Attempt $n failed; retrying in ${delay}s..."
+              n=$((n+1))
+              sleep "$delay"
+            done
+          }
+          retry bash -o pipefail -c 'python scripts/timeform_race_analysis.py 2>&1 | tee timeform_run.log'
           DATE=$(TZ=Europe/London date +%F)
           mkdir -p timeform/archive
           cp scripts/timeform_races_${DATE}.csv timeform/latest_timeform_races.csv
           cp scripts/timeform_races_${DATE}.csv timeform/archive/
+
       - name: Step 3 - Strategy filter
-        run: python scripts/run_strategy_filter.py | tee strategy_filter_run.log
-      - name: Build removed-only audit
+        if: steps.guard.outputs.skip != 'true'
+        shell: bash
         run: |
+          echo "Strategy filter" > .pipeline_stage
+          set -o pipefail
+          python scripts/run_strategy_filter.py 2>&1 | tee strategy_filter_run.log
+
+      - name: Build removed-only audit
+        if: steps.guard.outputs.skip != 'true'
+        run: |
+          echo "Removed-only audit" > .pipeline_stage
           python - <<'PY'
           import csv
-          with open('strategy_filter_audit.csv',encoding='utf-8',newline='') as f: rows=list(csv.DictReader(f))
+          with open('strategy_filter_audit.csv',encoding='utf-8',newline='') as f:
+              rows=list(csv.DictReader(f))
           fields=list(rows[0]) if rows else []
           removed=[r for r in rows if r.get('Status')=='EXCLUDED']
           with open('strategy_filter_removed.csv','w',encoding='utf-8',newline='') as f:
-              w=csv.DictWriter(f,fieldnames=fields);w.writeheader();w.writerows(removed)
+              w=csv.DictWriter(f,fieldnames=fields)
+              w.writeheader()
+              w.writerows(removed)
           PY
+
       - name: Publish everything
+        if: steps.guard.outputs.skip != 'true'
         run: |
+          echo "Publish" > .pipeline_stage
           DATE=$(TZ=Europe/London date +%F)
           mkdir -p history/$DATE
           cp strategy_filtered_tips.csv strategy_filter_audit.csv strategy_filter_removed.csv strategy_filter_summary.json strategy_filter_run.log history/$DATE/
@@ -64,3 +151,38 @@ jobs:
           git diff --cached --quiet || git commit -m "Publish Daily Strategy Filter $DATE"
           git pull --rebase origin main
           git push origin HEAD:main
+
+      - name: Build failure diagnostics
+        if: failure()
+        shell: bash
+        run: |
+          {
+            echo "Daily Greyhound Strategy Filter failure diagnostics"
+            echo "Date/time: $(TZ=Europe/London date '+%F %T %Z')"
+            echo "Event: ${GITHUB_EVENT_NAME}"
+            echo "Run ID: ${GITHUB_RUN_ID}"
+            echo "Commit: ${GITHUB_SHA}"
+            echo "Stage: $(cat .pipeline_stage 2>/dev/null || echo 'Unknown/setup')"
+            echo "Last success marker: $(cat .daily_strategy_filter_last_success.txt 2>/dev/null || echo 'missing')"
+            echo
+            echo "Git status:"
+            git status --short || true
+            echo
+            echo "Relevant generated files:"
+            ls -lah sporting_life_run.log timeform_run.log strategy_filter_run.log strategy_filter_summary.json strategy_filtered_tips.csv 2>/dev/null || true
+          } > failure_diagnostics.txt
+          cat failure_diagnostics.txt
+
+      - name: Upload failure diagnostics
+        if: failure()
+        uses: actions/upload-artifact@v4
+        with:
+          name: strategy-filter-failure-${{ github.run_id }}
+          if-no-files-found: ignore
+          retention-days: 14
+          path: |
+            failure_diagnostics.txt
+            sporting_life_run.log
+            timeform_run.log
+            strategy_filter_run.log
+            strategy_filter_summary.json
