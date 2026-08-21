@@ -1,1 +1,1 @@
-2026-08-20 manual recovery after scheduled run failure
+2026-08-21 manual full pipeline run authorised by user
