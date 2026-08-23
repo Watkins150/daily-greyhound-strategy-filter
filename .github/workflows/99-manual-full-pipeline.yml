@@ -7,12 +7,10 @@ on:
     branches: [main]
     paths: ['.manual_full_pipeline_trigger.txt']
   schedule:
-    # Primary run: later start gives Sporting Life/Timeform more time to settle and avoids top-of-hour congestion.
-    - cron: '12 8 * * *'
-      timezone: 'Europe/London'
-    # Recovery/watchdog run: exits harmlessly if today's primary run succeeded.
-    - cron: '42 8 * * *'
-      timezone: 'Europe/London'
+    # Primary run: 07:12 UTC = 08:12 UK during BST.
+    - cron: '12 7 * * *'
+    # Recovery/watchdog run: 07:42 UTC = 08:42 UK during BST.
+    - cron: '42 7 * * *'
 
 permissions:
   contents: write
