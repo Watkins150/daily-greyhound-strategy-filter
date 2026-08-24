@@ -1,0 +1,26 @@
+name: Scheduler Heartbeat Diagnostic
+
+on:
+  schedule:
+    - cron: '5 7 * * *'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  heartbeat:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Log scheduler heartbeat
+        run: |
+          echo "Scheduler heartbeat fired"
+          echo "Event: ${GITHUB_EVENT_NAME}"
+          echo "UTC: $(date -u '+%Y-%m-%d %H:%M:%S UTC')"
+          echo "UK: $(TZ=Europe/London date '+%Y-%m-%d %H:%M:%S %Z')"
+          {
+            echo "## Scheduler Heartbeat"
+            echo "- Event: ${GITHUB_EVENT_NAME}"
+            echo "- UTC: $(date -u '+%Y-%m-%d %H:%M:%S UTC')"
+            echo "- UK: $(TZ=Europe/London date '+%Y-%m-%d %H:%M:%S %Z')"
+          } >> "$GITHUB_STEP_SUMMARY"
