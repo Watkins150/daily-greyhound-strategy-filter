@@ -83,7 +83,10 @@ headers=['Provider','SelectionName','MarketType','StartTime','BetType','Size','M
 with open(OUTPUT,'w',encoding='utf-8',newline='') as f:
  w=csv.DictWriter(f,fieldnames=headers);w.writeheader()
  for r in retained:
-  dt=datetime.strptime(r['date']+' '+r['race_time'],'%Y-%m-%d %H:%M');w.writerow({'Provider':'Daily Strategy Filter','SelectionName':r['dog_name'],'MarketType':'WIN','StartTime':dt.strftime('%d/%m/%Y %H:%M'),'BetType':'LAY','Size':1,'MinPrice':r['StrategyMinPrice'],'MaxPrice':r['StrategyMaxPrice'],'BSP':'FALSE'})
+  dt=datetime.strptime(r['date']+' '+r['race_time'],'%Y-%m-%d %H:%M')
+  base={'SelectionName':r['dog_name'],'MarketType':'WIN','StartTime':dt.strftime('%d/%m/%Y %H:%M'),'BetType':'LAY','Size':1,'MinPrice':r['StrategyMinPrice'],'MaxPrice':r['StrategyMaxPrice'],'BSP':'FALSE'}
+  for provider in ('Daily Strategy Filter','Daily Strategy 2'):
+   w.writerow({'Provider':provider,**base})
 fields=['date','track','race_time','runner_number','dog_name','strategy','StrategyMinPrice','StrategyMaxPrice','Distance','Grade','AnalystVerdictPosition','ForecastRank','ForecastFractional','ForecastDecimal','ForecastState','Status','ExclusionCategory','Reason']
 with open(DETAIL,'w',encoding='utf-8',newline='') as f:
  w=csv.DictWriter(f,fieldnames=fields);w.writeheader()
