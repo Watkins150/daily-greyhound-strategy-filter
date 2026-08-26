@@ -2,7 +2,7 @@ import csv,json,re
 from collections import defaultdict
 from datetime import datetime
 from fractions import Fraction
-RACECARDS='racecards/latest_racecards.csv';AUDIT='racecards/latest_audit.csv';TIMEFORM='timeform/latest_timeform_races.csv';OUTPUT='strategy_filtered_tips.csv';DETAIL='strategy_filter_audit.csv';SUMMARY='strategy_filter_summary.json'
+RACECARDS='racecards/latest_racecards.csv';AUDIT='racecards/latest_audit.csv';TIMEFORM='timeform/latest_timeform_races.csv';OUTPUT='strategy_filtered_tips.csv';OUTPUT2='strategy_filtered_tips_2.csv';DETAIL='strategy_filter_audit.csv';SUMMARY='strategy_filter_summary.json'
 STRATEGIES={'Nottingham':{'name':'UK LAY Nottingham Trap 6','traps':{6:(1.01,100)}},'Central Park':{'name':'UK LAY Central Park Trap 3,4','traps':{3:(10,110),4:(10,110)}},'Monmore':{'name':'UK LAY Monmore Trap 2,5,6','traps':{2:(4,100),5:(4,100),6:(4,100)}},'Doncaster':{'name':'UK LAY Doncaster Trap 2,6','traps':{2:(6,120),6:(6,120)}},'Harlow':{'name':'UK LAY Harlow Trap 2,4','traps':{2:(12,100),4:(12,100)}},'Valley':{'name':'UK LAY Valley Trap 1,3,4','traps':{1:(4,100),3:(4,100),4:(4,100)}},'Romford':{'name':'UK LAY Romford Trap 1,2,6','traps':{1:(4,100),2:(4,100),6:(4,100)}},'Sunderland':{'name':'UK LAY Sunderland Trap 4','traps':{4:(9,100)}},'Towcester':{'name':'UK LAY Towcester Trap 1,5,6','traps':{1:(4,100),5:(4,100),6:(4,100)}},'Kinsley':{'name':'UK LAY Kinsley Trap 5,6','traps':{5:(4,100),6:(4,100)}},'Yarmouth':{'name':'UK LAY Yarmouth Trap 1,3,6','traps':{1:(6,50),3:(6,50),6:(6,50)}}}
 SOURCE_CONFIG='authoritative 11-strategy six-runner baseline 2026-08-25; Oxford and Swindon removed'
 def norm(s):return re.sub(r'[^a-z0-9]+','',(s or '').lower())
@@ -80,13 +80,14 @@ for c in candidates:
  elif frank==4:counts['forecast4_reviewed']+=1;row['Reason']=f'Forecast #4 reviewed ({ffrac}; decimal {fdec:.2f}); retained absent converging danger evidence'
  retained.append(row);analysed.append(row)
 headers=['Provider','SelectionName','MarketType','StartTime','BetType','Size','MinPrice','MaxPrice','BSP']
-with open(OUTPUT,'w',encoding='utf-8',newline='') as f:
- w=csv.DictWriter(f,fieldnames=headers);w.writeheader()
- for r in retained:
-  dt=datetime.strptime(r['date']+' '+r['race_time'],'%Y-%m-%d %H:%M')
-  base={'SelectionName':r['dog_name'],'MarketType':'WIN','StartTime':dt.strftime('%d/%m/%Y %H:%M'),'BetType':'LAY','Size':1,'MinPrice':r['StrategyMinPrice'],'MaxPrice':r['StrategyMaxPrice'],'BSP':'FALSE'}
-  for provider in ('Daily Strategy Filter','Daily Strategy 2'):
-   w.writerow({'Provider':provider,**base})
+def write_output(path,provider):
+ with open(path,'w',encoding='utf-8',newline='') as f:
+  w=csv.DictWriter(f,fieldnames=headers);w.writeheader()
+  for r in retained:
+   dt=datetime.strptime(r['date']+' '+r['race_time'],'%Y-%m-%d %H:%M')
+   w.writerow({'Provider':provider,'SelectionName':r['dog_name'],'MarketType':'WIN','StartTime':dt.strftime('%d/%m/%Y %H:%M'),'BetType':'LAY','Size':1,'MinPrice':r['StrategyMinPrice'],'MaxPrice':r['StrategyMaxPrice'],'BSP':'FALSE'})
+write_output(OUTPUT,'Daily Strategy Filter')
+write_output(OUTPUT2,'Daily Strategy 2')
 fields=['date','track','race_time','runner_number','dog_name','strategy','StrategyMinPrice','StrategyMaxPrice','Distance','Grade','AnalystVerdictPosition','ForecastRank','ForecastFractional','ForecastDecimal','ForecastState','Status','ExclusionCategory','Reason']
 with open(DETAIL,'w',encoding='utf-8',newline='') as f:
  w=csv.DictWriter(f,fieldnames=fields);w.writeheader()
