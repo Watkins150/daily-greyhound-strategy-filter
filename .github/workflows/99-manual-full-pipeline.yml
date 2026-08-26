@@ -112,11 +112,11 @@ jobs:
           echo "Publish" > .pipeline_stage
           DATE=$(TZ=Europe/London date +%F)
           mkdir -p history/$DATE
-          cp strategy_filtered_tips.csv strategy_filter_audit.csv strategy_filter_removed.csv strategy_filter_summary.json strategy_filter_run.log history/$DATE/
+          cp strategy_filtered_tips.csv strategy_filtered_tips_2.csv strategy_filter_audit.csv strategy_filter_removed.csv strategy_filter_summary.json strategy_filter_run.log history/$DATE/
           printf '%s\n' "$DATE" > .daily_strategy_filter_last_success.txt
           git config user.name 'github-actions[bot]'
           git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
-          git add racecards timeform strategy_filtered_tips.csv strategy_filter_audit.csv strategy_filter_removed.csv strategy_filter_summary.json strategy_filter_run.log history/ .daily_strategy_filter_last_success.txt
+          git add racecards timeform strategy_filtered_tips.csv strategy_filtered_tips_2.csv strategy_filter_audit.csv strategy_filter_removed.csv strategy_filter_summary.json strategy_filter_run.log history/ .daily_strategy_filter_last_success.txt
           git diff --cached --quiet || git commit -m "Publish Daily Strategy Filter $DATE"
           git pull --rebase origin main
           git push origin HEAD:main
@@ -138,7 +138,7 @@ jobs:
             git status --short || true
             echo
             echo "Relevant generated files:"
-            ls -lah sporting_life_run.log timeform_run.log strategy_filter_run.log strategy_filter_summary.json strategy_filtered_tips.csv 2>/dev/null || true
+            ls -lah sporting_life_run.log timeform_run.log strategy_filter_run.log strategy_filter_summary.json strategy_filtered_tips.csv strategy_filtered_tips_2.csv 2>/dev/null || true
           } > failure_diagnostics.txt
           cat failure_diagnostics.txt
 
