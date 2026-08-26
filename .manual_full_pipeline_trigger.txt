@@ -1,1 +1,1 @@
-2026-08-25 manual full pipeline run authorised by user
+2026-08-26 manual full pipeline run authorised by scheduled ChatGPT trigger
