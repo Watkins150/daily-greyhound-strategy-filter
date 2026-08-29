@@ -1,17 +1,114 @@
 {
   "date": "2026-08-29",
-  "malformed_races": 0,
-  "malformed_rows": [],
-  "six_runner_races": 74,
-  "raw_candidates": 121,
-  "complete_timeform_candidates": 121,
-  "timeform_race_discards": 0,
-  "analyst_top3_exclusions": 60,
-  "forecast_top3_exclusions": 1,
+  "malformed_races": 11,
+  "malformed_rows": [
+    {
+      "track": "Doncaster",
+      "race_time": "10:32",
+      "runner_number": "5",
+      "dog_name": "2 \u00be"
+    },
+    {
+      "track": "Doncaster",
+      "race_time": "10:48",
+      "runner_number": "2",
+      "dog_name": "1 \u00be"
+    },
+    {
+      "track": "Doncaster",
+      "race_time": "10:48",
+      "runner_number": "3",
+      "dog_name": "1 \u00bd"
+    },
+    {
+      "track": "Doncaster",
+      "race_time": "11:04",
+      "runner_number": "2",
+      "dog_name": "1 \u00be"
+    },
+    {
+      "track": "Doncaster",
+      "race_time": "11:04",
+      "runner_number": "3",
+      "dog_name": "3 \u00bd"
+    },
+    {
+      "track": "Doncaster",
+      "race_time": "11:21",
+      "runner_number": "2",
+      "dog_name": "2 \u00be"
+    },
+    {
+      "track": "Doncaster",
+      "race_time": "11:54",
+      "runner_number": "3",
+      "dog_name": "3 \u00be"
+    },
+    {
+      "track": "Monmore",
+      "race_time": "11:01",
+      "runner_number": "6",
+      "dog_name": "2 \u00bd"
+    },
+    {
+      "track": "Monmore",
+      "race_time": "11:18",
+      "runner_number": "2",
+      "dog_name": "1 \u00be"
+    },
+    {
+      "track": "Monmore",
+      "race_time": "11:18",
+      "runner_number": "3",
+      "dog_name": "1 \u00bc"
+    },
+    {
+      "track": "Monmore",
+      "race_time": "11:34",
+      "runner_number": "4",
+      "dog_name": "3 \u00bc"
+    },
+    {
+      "track": "Romford",
+      "race_time": "11:09",
+      "runner_number": "2",
+      "dog_name": "2 \u00bc"
+    },
+    {
+      "track": "Romford",
+      "race_time": "11:27",
+      "runner_number": "3",
+      "dog_name": "1 \u00bd"
+    },
+    {
+      "track": "Romford",
+      "race_time": "11:27",
+      "runner_number": "4",
+      "dog_name": "2 \u00bd"
+    },
+    {
+      "track": "Romford",
+      "race_time": "11:27",
+      "runner_number": "5",
+      "dog_name": "3 \u00bc"
+    },
+    {
+      "track": "Romford",
+      "race_time": "11:43",
+      "runner_number": "2",
+      "dog_name": "4 \u00bd"
+    }
+  ],
+  "six_runner_races": 69,
+  "raw_candidates": 95,
+  "complete_timeform_candidates": 89,
+  "timeform_race_discards": 6,
+  "analyst_top3_exclusions": 42,
+  "forecast_top3_exclusions": 0,
   "forecast_boundary_ties": 2,
-  "forecast4_reviewed": 16,
+  "forecast4_reviewed": 11,
   "additional_risk_exclusions": 0,
-  "retained": 60,
-  "source_config": "authoritative 11-strategy six-runner baseline 2026-08-25; Oxford and Swindon removed",
-  "complete_timeform_pct": 100.0
+  "retained": 47,
+  "source_config": "authoritative 10-strategy six-runner baseline 2026-08-29; Oxford, Swindon and Romford removed",
+  "complete_timeform_pct": 93.68
 }

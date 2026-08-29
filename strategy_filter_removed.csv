@@ -5,7 +5,6 @@ date,track,race_time,runner_number,dog_name,strategy,StrategyMinPrice,StrategyMa
 2026-08-29,Central Park,19:50,4,Martindale Lad,"UK LAY Central Park Trap 3,4",10,110,277m,OR,1,1,6/5,2.2,TOP3,EXCLUDED,ANALYST_TOP3,Timeform Analyst Verdict #1
 2026-08-29,Central Park,20:10,3,Westwood Betty,"UK LAY Central Park Trap 3,4",10,110,491m,OR,2,2,3/1,4.0,TOP3,EXCLUDED,ANALYST_TOP3,Timeform Analyst Verdict #2
 2026-08-29,Central Park,21:10,4,Headford Lily,"UK LAY Central Park Trap 3,4",10,110,491m,OR,1,1,1/4,1.25,TOP3,EXCLUDED,ANALYST_TOP3,Timeform Analyst Verdict #1
-2026-08-29,Doncaster,11:04,2,Vinegarhill Kurn,"UK LAY Doncaster Trap 2,6",6,120,275m,D2,2,2,5/2,3.5,TOP3,EXCLUDED,ANALYST_TOP3,Timeform Analyst Verdict #2
 2026-08-29,Doncaster,12:12,2,Hasty Sam,"UK LAY Doncaster Trap 2,6",6,120,450m,B5,2,1,11/8,2.375,TOP3,EXCLUDED,ANALYST_TOP3,Timeform Analyst Verdict #2
 2026-08-29,Doncaster,18:11,2,Skeard Noah,"UK LAY Doncaster Trap 2,6",6,120,450m,OR,2,2,3/1,4.0,TOP3,EXCLUDED,ANALYST_TOP3,Timeform Analyst Verdict #2
 2026-08-29,Doncaster,19:58,6,Parkview Tommy,"UK LAY Doncaster Trap 2,6",6,120,483m,OR,3,3,19/2,10.5,TOP3,EXCLUDED,ANALYST_TOP3,Timeform Analyst Verdict #3
@@ -13,15 +12,12 @@ date,track,race_time,runner_number,dog_name,strategy,StrategyMinPrice,StrategyMa
 2026-08-29,Doncaster,20:34,2,Westway Sailor,"UK LAY Doncaster Trap 2,6",6,120,483m,OR,3,2,15/8,2.875,TOP3,EXCLUDED,ANALYST_TOP3,Timeform Analyst Verdict #3
 2026-08-29,Doncaster,20:34,6,Stellas Incharge,"UK LAY Doncaster Trap 2,6",6,120,483m,OR,2,3,11/4,3.75,TOP3,EXCLUDED,ANALYST_TOP3,Timeform Analyst Verdict #2
 2026-08-29,Doncaster,20:52,2,The Other Chief,"UK LAY Doncaster Trap 2,6",6,120,483m,OR,3,3,4/1,5.0,BOUNDARY_TIE,EXCLUDED,ANALYST_TOP3,Timeform Analyst Verdict #3
-2026-08-29,Monmore,11:01,2,Only On Bale,"UK LAY Monmore Trap 2,5,6",4,100,480m,A9,1,1,15/8,2.875,TOP3,EXCLUDED,ANALYST_TOP3,Timeform Analyst Verdict #1
-2026-08-29,Monmore,11:01,6,Bealtaine,"UK LAY Monmore Trap 2,5,6",4,100,480m,A9,2,2,3/1,4.0,TOP3,EXCLUDED,ANALYST_TOP3,Timeform Analyst Verdict #2
-2026-08-29,Monmore,11:18,2,Milestone Penny,"UK LAY Monmore Trap 2,5,6",4,100,264m,D3,2,2,9/4,3.25,TOP3,EXCLUDED,ANALYST_TOP3,Timeform Analyst Verdict #2
-2026-08-29,Monmore,11:18,6,Swoop Swoop,"UK LAY Monmore Trap 2,5,6",4,100,264m,D3,1,1,2/1,3.0,TOP3,EXCLUDED,ANALYST_TOP3,Timeform Analyst Verdict #1
-2026-08-29,Monmore,11:34,2,Winterfield Nina,"UK LAY Monmore Trap 2,5,6",4,100,480m,A8,1,2,3/1,4.0,TOP3,EXCLUDED,ANALYST_TOP3,Timeform Analyst Verdict #1
-2026-08-29,Monmore,11:34,6,Aero Maisie,"UK LAY Monmore Trap 2,5,6",4,100,480m,A8,3,3,7/2,4.5,TOP3,EXCLUDED,ANALYST_TOP3,Timeform Analyst Verdict #3
-2026-08-29,Monmore,12:09,5,Chuckies Angel,"UK LAY Monmore Trap 2,5,6",4,100,480m,A7,2,2,3/1,4.0,TOP3,EXCLUDED,ANALYST_TOP3,Timeform Analyst Verdict #2
-2026-08-29,Monmore,12:09,6,Angleseyparadise,"UK LAY Monmore Trap 2,5,6",4,100,480m,A7,3,4,9/2,5.5,OUTSIDE_TOP3,EXCLUDED,ANALYST_TOP3,Timeform Analyst Verdict #3
-2026-08-29,Monmore,12:26,5,Aero Vigil,"UK LAY Monmore Trap 2,5,6",4,100,630m,S3,3,2,5/2,3.5,TOP3,EXCLUDED,ANALYST_TOP3,Timeform Analyst Verdict #3
+2026-08-29,Monmore,12:09,2,Sugar Rose,"UK LAY Monmore Trap 2,5,6",4,100,,,,,,,,EXCLUDED,TIMEFORM_RACE_DISCARDED,Timeform race missing/incomplete or Analyst Verdict top 3 incomplete
+2026-08-29,Monmore,12:09,5,Chuckies Angel,"UK LAY Monmore Trap 2,5,6",4,100,,,,,,,,EXCLUDED,TIMEFORM_RACE_DISCARDED,Timeform race missing/incomplete or Analyst Verdict top 3 incomplete
+2026-08-29,Monmore,12:09,6,Angleseyparadise,"UK LAY Monmore Trap 2,5,6",4,100,,,,,,,,EXCLUDED,TIMEFORM_RACE_DISCARDED,Timeform race missing/incomplete or Analyst Verdict top 3 incomplete
+2026-08-29,Monmore,12:26,2,Sugar Girl Katie,"UK LAY Monmore Trap 2,5,6",4,100,,,,,,,,EXCLUDED,TIMEFORM_RACE_DISCARDED,Timeform race missing/incomplete or Analyst Verdict top 3 incomplete
+2026-08-29,Monmore,12:26,5,Aero Vigil,"UK LAY Monmore Trap 2,5,6",4,100,,,,,,,,EXCLUDED,TIMEFORM_RACE_DISCARDED,Timeform race missing/incomplete or Analyst Verdict top 3 incomplete
+2026-08-29,Monmore,12:26,6,Swift Eaglestone,"UK LAY Monmore Trap 2,5,6",4,100,,,,,,,,EXCLUDED,TIMEFORM_RACE_DISCARDED,Timeform race missing/incomplete or Analyst Verdict top 3 incomplete
 2026-08-29,Monmore,12:42,5,Sadele,"UK LAY Monmore Trap 2,5,6",4,100,264m,D2,3,5,13/2,7.5,OUTSIDE_TOP3,EXCLUDED,ANALYST_TOP3,Timeform Analyst Verdict #3
 2026-08-29,Monmore,12:42,6,Mr Brightside,"UK LAY Monmore Trap 2,5,6",4,100,264m,D2,2,2,4/1,5.0,TOP3,EXCLUDED,ANALYST_TOP3,Timeform Analyst Verdict #2
 2026-08-29,Monmore,12:59,2,Darver Spark,"UK LAY Monmore Trap 2,5,6",4,100,480m,A10,2,1,11/5,3.2,TOP3,EXCLUDED,ANALYST_TOP3,Timeform Analyst Verdict #2
@@ -46,15 +42,6 @@ date,track,race_time,runner_number,dog_name,strategy,StrategyMinPrice,StrategyMa
 2026-08-29,Monmore,21:34,5,Magical Keith,"UK LAY Monmore Trap 2,5,6",4,100,480m,OR,1,1,13/8,2.625,TOP3,EXCLUDED,ANALYST_TOP3,Timeform Analyst Verdict #1
 2026-08-29,Monmore,21:34,6,Quivers Rafa,"UK LAY Monmore Trap 2,5,6",4,100,480m,OR,3,3,5/1,6.0,TOP3,EXCLUDED,ANALYST_TOP3,Timeform Analyst Verdict #3
 2026-08-29,Monmore,21:50,2,Makeit River,"UK LAY Monmore Trap 2,5,6",4,100,630m,OR,1,1,10/11,1.9091,TOP3,EXCLUDED,ANALYST_TOP3,Timeform Analyst Verdict #1
-2026-08-29,Romford,11:43,1,Aero Sasha,"UK LAY Romford Trap 1,2,6",4,100,400m,A11,2,3,4/1,5.0,TOP3,EXCLUDED,ANALYST_TOP3,Timeform Analyst Verdict #2
-2026-08-29,Romford,11:43,2,Ritzy Rosie,"UK LAY Romford Trap 1,2,6",4,100,400m,A11,1,1,9/4,3.25,TOP3,EXCLUDED,ANALYST_TOP3,Timeform Analyst Verdict #1
-2026-08-29,Romford,12:18,2,Mohican Honey,"UK LAY Romford Trap 1,2,6",4,100,400m,A12,2,2,7/2,4.5,TOP3,EXCLUDED,ANALYST_TOP3,Timeform Analyst Verdict #2
-2026-08-29,Romford,13:59,2,Didier Dogba,"UK LAY Romford Trap 1,2,6",4,100,400m,A7,2,3,7/2,4.5,TOP3,EXCLUDED,ANALYST_TOP3,Timeform Analyst Verdict #2
-2026-08-29,Romford,13:59,6,Orange Ryan,"UK LAY Romford Trap 1,2,6",4,100,400m,A7,3,2,5/2,3.5,TOP3,EXCLUDED,ANALYST_TOP3,Timeform Analyst Verdict #3
-2026-08-29,Romford,20:42,2,Droopys Pedigree,"UK LAY Romford Trap 1,2,6",4,100,400m,A12,3,3,9/2,5.5,TOP3,EXCLUDED,ANALYST_TOP3,Timeform Analyst Verdict #3
-2026-08-29,Romford,20:42,6,Holding Suzie,"UK LAY Romford Trap 1,2,6",4,100,400m,A12,2,1,13/8,2.625,TOP3,EXCLUDED,ANALYST_TOP3,Timeform Analyst Verdict #2
-2026-08-29,Romford,21:02,1,Olwinn Seen It,"UK LAY Romford Trap 1,2,6",4,100,400m,A7,3,4,9/2,5.5,OUTSIDE_TOP3,EXCLUDED,ANALYST_TOP3,Timeform Analyst Verdict #3
-2026-08-29,Romford,21:02,2,Rural Bluey,"UK LAY Romford Trap 1,2,6",4,100,400m,A7,OUTSIDE_TOP3,2,4/1,5.0,TOP3,EXCLUDED,FORECAST_TOP3,"Timeform Betting Forecast top 3 (rank 2, 4/1; decimal 5.00)"
 2026-08-29,Towcester,14:18,6,Trapstyle Wee,"UK LAY Towcester Trap 1,5,6",4,100,270m,D4,2,2,100/30,4.3333,TOP3,EXCLUDED,ANALYST_TOP3,Timeform Analyst Verdict #2
 2026-08-29,Towcester,16:18,1,Trapstyle Faith,"UK LAY Towcester Trap 1,5,6",4,100,270m,D5,3,3,9/2,5.5,BOUNDARY_TIE,EXCLUDED,ANALYST_TOP3,Timeform Analyst Verdict #3
 2026-08-29,Towcester,16:18,6,Chadwell Pest,"UK LAY Towcester Trap 1,5,6",4,100,270m,D5,2,1,2/1,3.0,TOP3,EXCLUDED,ANALYST_TOP3,Timeform Analyst Verdict #2
